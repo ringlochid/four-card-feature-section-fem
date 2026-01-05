@@ -9,6 +9,7 @@
   <title>Four card feature section</title>
 
   <style>
+
     :root {
       --spacing-100:0.5rem; 
       --spacing-200: 1rem;
@@ -33,7 +34,7 @@
     }
 
     main {
-      width: min(90vw, 19.75rem);
+      width: min(90svw, 19.75rem);
       height: 100%;
       max-height: 100svh;
       padding: 3.5rem 0;
@@ -47,6 +48,9 @@
       overscroll-behavior: none;
       scrollbar-width: none;
       background-color: #FAFAFA;
+      @media( 768px <= width <= 1440px){
+        width: min(41.25rem, 90svw);
+      }
     }
 
     .title-wrapper {
@@ -55,6 +59,9 @@
       flex-direction: column;
       gap: var(--spacing-200);
       align-items: stretch;
+      @media( 768px <= width <= 1440px){
+        max-width: 33.75rem;
+      }
     }
 
     .title-wrapper h1 {
@@ -107,8 +114,20 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: stretch;
+      align-items: center;
       gap: var(--spacing-400, 2rem);
+    }
+
+    .card-wrapper .middle-layer {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-400, 2rem);
+      @media( 768px <= width <= 1440px ) {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--spacing-400, 2rem);
+      }
     }
 
     .card {
@@ -224,24 +243,30 @@
           <img src="./images/icon-supervisor.svg" alt="icon-supervisor">
         </div>
       </div>
-      <div class="card bar team-builder">
-        <div class="title-container">
-          <h1>Team Builder</h1>
-          <p>Scans our talent network to create the optimal team for your project</p>
+
+      <div class="middle-layer">
+
+        <div class="card bar team-builder">
+          <div class="title-container">
+            <h1>Team Builder</h1>
+            <p>Scans our talent network to create the optimal team for your project</p>
+          </div>
+          <div class="image-container">
+            <img src="./images/icon-team-builder.svg" alt="icon-team-builder">
+          </div>
         </div>
-        <div class="image-container">
-          <img src="./images/icon-team-builder.svg" alt="icon-team-builder">
+        <div class="card bar karma">
+          <div class="title-container">
+            <h1>Karma</h1>
+            <p>Regularly evaluates our talent to ensure quality</p>
+          </div>
+          <div class="image-container">
+            <img src="./images/icon-karma.svg" alt="icon-karma">
+          </div>
         </div>
+
       </div>
-      <div class="card bar karma">
-        <div class="title-container">
-          <h1>Karma</h1>
-          <p>Regularly evaluates our talent to ensure quality</p>
-        </div>
-        <div class="image-container">
-          <img src="./images/icon-karma.svg" alt="icon-karma">
-        </div>
-      </div>
+
       <div class="card bar calculator">
         <div class="title-container">
           <h1>Calculator</h1>
