@@ -41,6 +41,7 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 3.75rem;
       overflow-x: hidden;
       overflow-y: auto;
@@ -48,8 +49,11 @@
       overscroll-behavior: none;
       scrollbar-width: none;
       background-color: #FAFAFA;
-      @media( 768px <= width <= 1440px){
+      @media (768px <= width <= 1440px){
         width: min(41.25rem, 90svw);
+      }
+      @media (width >= 1441px) {
+        width: min(69.62rem, 90svw);
       }
     }
 
@@ -113,7 +117,6 @@
       width: 100%;
       display: grid;
       gap: var(--spacing-400, 2rem);
-      justify-items: center;
       
       /* Mobile: single column, specific order */
       grid-template-columns: 1fr;
@@ -122,24 +125,30 @@
         "team-builder"
         "karma"
         "calculator";
-    }
 
-    /* Assign grid areas to each card */
-    .card.supervisor { grid-area: supervisor; }
-    .card.team-builder { grid-area: team-builder; }
-    .card.karma { grid-area: karma; }
-    .card.calculator { grid-area: calculator; }
-
-    /* Tablet: 2-column layout */
-    @media (768px <= width <= 1440px) {
-      .card-wrapper {
+      @media (768px <= width <= 1440px) {
+        justify-items: center;
         grid-template-columns: 1fr 1fr;
         grid-template-areas:
           "team-builder team-builder"
           "supervisor karma"
           "calculator calculator";
       }
+
+      @media (width >= 1441px) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+          "supervisor team-builder calculator"
+          "supervisor karma        calculator";
+        align-items: center;
+      }
     }
+
+    .card.supervisor { grid-area: supervisor; }
+    .card.team-builder { grid-area: team-builder; }
+    .card.karma { grid-area: karma; }
+    .card.calculator { grid-area: calculator; }
 
     .card {
       display: flex;
@@ -152,7 +161,7 @@
       background: var(--color-white, #FFF);
       /* Drop Shadow */
       box-shadow: 0 15px 30px -11px rgba(131, 166, 210, 0.50);
-      box-sizing: content-box;
+      box-sizing: border-box;
       position: relative;
       overflow: hidden;
     }
@@ -160,7 +169,7 @@
     .card.bar::before {
       content: '';
       position: absolute;
-      width: 21.875rem;
+      width: 40.875rem;
       height: 0.25rem;
       top: 0;
       left: -1.125rem;
